@@ -1,4 +1,5 @@
 import prismaClient from "../../prisma";
+import { removeDecimalNumberToPrice } from "../../utils/removeDecimalNumberToPrice";
 
 interface ProductRequest {
     name: string;
@@ -27,7 +28,7 @@ class CreateProductService {
         const product = await prismaClient.product.create({
             data:{
                 name: name,
-                price: price,
+                price: removeDecimalNumberToPrice(price),
                 description: description,
                 banner: banner,
                 category_id: category_id,

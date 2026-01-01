@@ -13,15 +13,16 @@ class ListOrdersController {
 
         setInterval( async () => {
             const orders = await listOrderService.execute();
-            console.log('sent:', orders);
+            //console.log('sent:', orders);
             response.write(`data: ${JSON.stringify(orders)}\n\n`);
         }, 1000);
-
+        
 
         /*
         const orders = await listOrderService.execute();
 
         return response.json(orders);*/
+        
     }
 }
 

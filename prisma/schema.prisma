@@ -35,7 +35,7 @@ model Category {
 model Product {
   id          String    @id @default(uuid())
   name        String
-  price       String
+  price       Float
   description String
   banner      String
   created_at  DateTime? @default(now())
@@ -76,3 +76,5 @@ model Item {
 
   @@map("items")
 }
+
+// criar migration: yarn prisma migrate dev

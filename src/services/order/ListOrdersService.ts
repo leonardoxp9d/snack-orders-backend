@@ -11,7 +11,7 @@ class ListOrdersService {
                 created_at: 'desc'
             }
         });
-
+        
         return orders;
     }
 }

@@ -6,11 +6,6 @@ class CreateProductController {
         const { name, price, description, category_id } = request.body;
 
         const createProductService = new CreateProductService();
-        console.log("name: " +name);
-        console.log("price: " +price);
-        console.log("description: "+ description)
-        console.log("category_id: "+ category_id)
-        console.log("file: " + request.file)
 
         if(!request.file) {
             throw new Error("error upload file");

@@ -1,4 +1,5 @@
 import prismaClient from '../../prisma'
+import { addDecimalNumberToPrice } from '../../utils/addDecimalNumberToPrice';
 
 interface ProductRequest {
     category_id: string;
@@ -11,9 +12,22 @@ class ListByCategoryService {
             where:{
                 category_id: category_id,
             },
+            select:{
+                id: true,
+                name: true,
+                price: true,
+                banner: true,
+                description: true,
+                category_id: true,
+            }
         });
 
-        return findByCategory;
+        return findByCategory.map( product => {
+            return {
+                ...product,
+                price: addDecimalNumberToPrice(product.price),
+            }
+        });
 
     }
 }

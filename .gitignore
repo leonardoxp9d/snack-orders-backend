@@ -1,3 +1,7 @@
 node_modules
 # Keep environment variables out of version control
 .env
+
+# isso e o arquivo gitkeep em conjunto Garante que a pasta tmp sempre seja criada porém sem conteúdo algum
+tmp/*
+!tmp/.gitkeep

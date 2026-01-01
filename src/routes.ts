@@ -33,16 +33,18 @@ const upload = multer(uploadConfig.upload("./tmp"));
 router.post('/users', new CreateUserController().handle);
 /* Rota de login de user*/
 router.post('/session', new AuthUserController().handle);
-/* Rota de detalhes(ver informaçẽos) do usuario */
+/* Rota de detalhes(ver informações) do usuario */
 router.get('/me', isAuthenticated, new DetailUserController().handle);
 
 /* ROTAS CATEGORY */
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
-router.get('/category', isAuthenticated, new ListCategoryController().handle);
+//-- router.get('/category', isAuthenticated, new ListCategoryController().handle);
+router.get('/category', new ListCategoryController().handle);
 
 /* ROTAS PRODUCT */
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle);
-router.get('/category/product', isAuthenticated, new ListByCategoryController().handle);
+//--router.get('/category/product', isAuthenticated, new ListByCategoryController().handle);
+router.get('/category/product', new ListByCategoryController().handle);
 
 /* ROTAS ORDER */
 router.post('/order', isAuthenticated, new CreateOrderController().handle);
